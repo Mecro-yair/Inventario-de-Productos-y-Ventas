@@ -79,6 +79,25 @@ void buscarProducto(){
     }
     cout << "Producto no encontrado." << endl;
 }
+
+void actualizarProducto(){
+    string nombre;
+    cout << "Digite el nombre del producto a actualizar: ";
+    cin.ignore();
+    getline(cin, nombre);
+    for (int i = 0; i < cantidadProductos; i++) {
+        if (productos[i].nombre == nombre) {
+            cout << "Digite el nuevo nombre del producto: ";
+            getline(cin, productos[i].nombre);
+            cout << "Digite el nuevo precio del producto: ";
+            cin >> productos[i].precio;
+            cout << "Producto actualizado con éxito." << endl;
+            return;
+        }
+    }
+    cout << "Producto no encontrado." << endl;
+}
+
 int main(){
 	SetConsoleOutputCP(CP_UTF8);
 char opcion;
@@ -107,6 +126,7 @@ char opcion;
 	 	buscarProducto();
 	 	break;
 	 case 'D':
+	 	actualizarProducto();
 	 	break;
 	 	
 	 case 'E':
