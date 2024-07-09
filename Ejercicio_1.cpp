@@ -63,7 +63,7 @@ void listarProductos() {
     }
     for (int i = 0; i < cantidadProductos; i++) {
     	cout<<"Producto " << i + 1 <<":\n";
-        cout << ". Nombre: " << productos[i].nombre << ", Precio: " << productos[i].precio <<"\n"<< endl;
+        cout << ". Nombre: " << productos[i].nombre << "\nPrecio: " << productos[i].precio <<"\n"<< endl;
     }
 }
 void buscarProducto(){
@@ -131,7 +131,7 @@ void registrarVenta() {
         if (productos[i].nombre == nuevaVenta.producto) {
             nuevaVenta.precioTotal = nuevaVenta.cantidad * productos[i].precio;
             ventas[cantidadVentas++] = nuevaVenta;
-            cout << "Venta registrada con éxito." << endl;
+            cout << "Venta registrada con exito." << endl;
             return;
         }
     }
@@ -144,10 +144,17 @@ void listarVentas() {
         return;
     }
     for (int i = 0; i < cantidadVentas; i++) {
-        cout << "ID Venta: " << ventas[i].idVenta << ", Producto: " << ventas[i].producto << ", Cantidad: " << ventas[i].cantidad << ", Precio Total: " << ventas[i].precioTotal << endl;
+        cout << "ID Venta: " << ventas[i].idVenta << "\nProducto: " << ventas[i].producto << "\nCantidad: " << ventas[i].cantidad << "\nPrecio Total: " << ventas[i].precioTotal << endl;
     }
 }
 
+void calcularTotalVentas() {
+    float total = 0;
+    for (int i = 0; i < cantidadVentas; i++) {
+        total += ventas[i].precioTotal;
+    }
+    cout << "\nEl total de ventas realizadas es: " << total << endl;
+}
 int main(){
 	SetConsoleOutputCP(CP_UTF8);
 char opcion;
@@ -191,6 +198,7 @@ char opcion;
 	 	break;
 		  
 	 case 'H':
+	 	calcularTotalVentas();
 	 	break;
 		  
 	 case 'S':
