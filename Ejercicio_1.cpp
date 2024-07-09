@@ -137,6 +137,17 @@ void registrarVenta() {
     }
     cout << "Producto no a sido encontrado. Venta no registrada." << endl;
 }
+
+void listarVentas() {
+    if (cantidadVentas == 0) {
+        cout << "No hay ventas registradas." << endl;
+        return;
+    }
+    for (int i = 0; i < cantidadVentas; i++) {
+        cout << "ID Venta: " << ventas[i].idVenta << ", Producto: " << ventas[i].producto << ", Cantidad: " << ventas[i].cantidad << ", Precio Total: " << ventas[i].precioTotal << endl;
+    }
+}
+
 int main(){
 	SetConsoleOutputCP(CP_UTF8);
 char opcion;
@@ -176,6 +187,7 @@ char opcion;
 	 	break;
 	 	
 	 case 'G':
+	 	listarVentas();
 	 	break;
 		  
 	 case 'H':
