@@ -24,6 +24,38 @@ S: Salir del programa.
 
 using namespace std;
 
+struct Producto {
+    string nombre;
+    float precio;
+};
+
+struct Venta {
+    int idVenta;
+    string producto;
+    int cantidad;
+    float precioTotal;
+};
+
+Producto productos[100];
+Venta ventas[100];
+int cantidadProductos = 0;
+int cantidadVentas = 0;
+int idVentaActual = 1;
+
+void registrarUnProducto() {
+    if (cantidadProductos >= 100) {
+        cout << "No se pueden registrar más productos." << endl;
+        return;
+    }
+    cout << "Digite el nombre del producto: ";
+    cin.ignore();
+    getline(cin, productos[cantidadProductos].nombre);
+    cout << "Digite el precio del producto: ";
+    cin >> productos[cantidadProductos].precio;
+    cantidadProductos++;
+    cout << "El producto se ha registrado correctamente." << endl;
+}
+
 int main(){
 	SetConsoleOutputCP(CP_UTF8);
 char opcion;
@@ -43,6 +75,7 @@ char opcion;
 	 
 	 switch(opcion){
 	 case 'A':
+	 	registrarUnProducto();
 	 	break;
 	 	
 	 case 'B':
