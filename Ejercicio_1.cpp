@@ -115,6 +115,28 @@ void eliminarProducto(){
     cout << "Producto no encontrado." << endl;
 }
 
+void registrarVenta() {
+    if (cantidadVentas >= 100) {
+        cout << "No se pueden registrar más ventas." << endl;
+        return;
+    }
+    Venta nuevaVenta;
+    nuevaVenta.idVenta = idVentaActual++;
+    cout << "Digite el nombre del producto vendido: ";
+    cin.ignore();
+    getline(cin, nuevaVenta.producto);
+    cout << "Digite la cantidad vendida: ";
+    cin >> nuevaVenta.cantidad;
+    for (int i = 0; i < cantidadProductos; i++) {
+        if (productos[i].nombre == nuevaVenta.producto) {
+            nuevaVenta.precioTotal = nuevaVenta.cantidad * productos[i].precio;
+            ventas[cantidadVentas++] = nuevaVenta;
+            cout << "Venta registrada con éxito." << endl;
+            return;
+        }
+    }
+    cout << "Producto no a sido encontrado. Venta no registrada." << endl;
+}
 int main(){
 	SetConsoleOutputCP(CP_UTF8);
 char opcion;
@@ -150,7 +172,7 @@ char opcion;
 	 	break;
 		  
 	 case 'F':
-	 	
+	 	registrarVenta();
 	 	break;
 	 	
 	 case 'G':
