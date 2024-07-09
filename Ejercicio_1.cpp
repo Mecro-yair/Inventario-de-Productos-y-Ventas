@@ -97,6 +97,23 @@ void actualizarProducto(){
     }
     cout << "Producto no encontrado." << endl;
 }
+void eliminarProducto(){
+    string nombre;
+    cout << "Digite el nombre del producto a eliminar: ";
+    cin.ignore();
+    getline(cin, nombre);
+    for (int i = 0; i < cantidadProductos; i++) {
+        if (productos[i].nombre == nombre) {
+            for (int j = i; j < cantidadProductos - 1; j++) {
+                productos[j] = productos[j + 1];
+            }
+            cantidadProductos--;
+            cout << "Producto eliminado con éxito." << endl;
+            return;
+        }
+    }
+    cout << "Producto no encontrado." << endl;
+}
 
 int main(){
 	SetConsoleOutputCP(CP_UTF8);
@@ -128,11 +145,12 @@ char opcion;
 	 case 'D':
 	 	actualizarProducto();
 	 	break;
-	 	
 	 case 'E':
+	 	eliminarProducto();
 	 	break;
 		  
 	 case 'F':
+	 	
 	 	break;
 	 	
 	 case 'G':
