@@ -56,6 +56,16 @@ void registrarUnProducto() {
     cout << "El producto se ha registrado correctamente." << endl;
 }
 
+void listarProductos() {
+    if (cantidadProductos == 0) {
+        cout << "No hay productos registrados." << endl;
+        return;
+    }
+    for (int i = 0; i < cantidadProductos; i++) {
+    	cout<<"Producto " << i + 1 <<":\n";
+        cout << ". Nombre: " << productos[i].nombre << ", Precio: " << productos[i].precio <<"\n"<< endl;
+    }
+}
 int main(){
 	SetConsoleOutputCP(CP_UTF8);
 char opcion;
@@ -77,8 +87,8 @@ char opcion;
 	 case 'A':
 	 	registrarUnProducto();
 	 	break;
-	 	
 	 case 'B':
+	 	listarProductos();
 	 	break;
 	 	
 	 case 'C':
